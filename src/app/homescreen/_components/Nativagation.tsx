@@ -8,7 +8,7 @@ import { ChevronDown, Search } from "lucide-react";
 
 export default function Navigation() {
   return (
-    <div className="flex flex-col  max-w-360 mx-auto w-full bg-white">
+    <div className="flex flex-col  max-w-360 mx-auto bg-white">
       <section className="w-full flex items-center justify-between py-3 px-5 md:px-12 xl:px-16 xl:gap-4">
         <img src="/Logo.svg" alt="logo" className="xl:h-10" />
 

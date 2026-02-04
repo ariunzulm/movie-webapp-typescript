@@ -1,36 +1,32 @@
-import { Button } from "@/components/ui/button";
-import { ArrowRight, Star } from "lucide-react";
+import { Star } from "lucide-react";
 
-export default function MovieCard({ name, rating, posterImage }) {
+type MovieCardProps = {
+  movie: {
+    movieName: string;
+    rating: number;
+    posterImage: string;
+  };
+};
+export default function MovieCard({ movie }: MovieCardProps) {
   return (
-    <div className="px-5 h-auto w-full">
-      <div>
-        <div className="flex justify-between mb-8">
-          <h3 className="font-semibold text-2xl leading-8">Upcoming</h3>
-          <div className="flex flex-wrap items-center text-sm">
-            <Button>See more</Button>
-            <Button size="icon" aria-label="Submit">
-              <ArrowRight />
-            </Button>
-          </div>
-        </div>
-
-        <div className="bg-[#F4F4F5] rounded-lg min-h-77.25">
-          <img
-            src="/list-1.png"
-            alt="Movie name"
-            className="h-auto object-cover"
-          />
-          <div className="min-h-19">
-            <div className="flex items-center gap-1.5 px-3 py-1.5">
-              <Star fill="#FDE047" className="text-amber-200" />
-              <p className="text-lg font-semibold text-gray-900">6.9</p>
-              <p className="text-base text-gray-400">/10</p>
-            </div>
-            <p className="text-[12px] font-normal text-[#09090B] px-5 leading-relaxed w-93">
-              Get Away
+    <div className="mx-auto h-auto max-w-sm">
+      <div className="bg-[#F4F4F5] rounded-lg overflow-hidden  shadow-lg">
+        <img
+          src={movie.posterImage}
+          alt={`${movie.movieName} poster`}
+          className="h-auto w-full object-cover"
+        />
+        <div className="p-3">
+          <div className="flex items-center gap-1.5 mb-2">
+            <Star fill="#FDE047" className="text-amber-200" />
+            <p className="text-lg font-semibold text-gray-900">
+              {movie.rating}
             </p>
+            <p className="text-base text-gray-400">/10</p>
           </div>
+          <p className="text-base pb-3 font-medium text-[#09090B] truncate">
+            {movie.movieName}
+          </p>
         </div>
       </div>
     </div>
