@@ -12,16 +12,16 @@ export default function Navigation() {
       <section className="w-full flex items-center justify-between py-3 px-5 md:px-12 xl:px-16 xl:gap-4">
         <img src="/Logo.svg" alt="logo" className="xl:h-10" />
 
-        <div className="flex gap-3 md:hidden">
+        <div className="flex gap-3 ">
           <img
             src="/search-icon.svg"
             alt="search icon"
-            className="cursor-pointer md:hidden"
+            className="cursor-pointer "
           />
           <img src="/nightmode-icon.svg" alt="nightmode icon" />
         </div>
 
-        <div className="hidden md:flex gap-3 xl:gap-4 items-center justify-center">
+        <div className="flex gap-3 xl:gap-4 items-center justify-center md:hidden">
           <Button
             variant="link"
             className="text-sm py-2 px-3 font-medium border border-zinc-200 hover:bg-gray-50 cursor-pointer"

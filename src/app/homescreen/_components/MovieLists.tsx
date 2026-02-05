@@ -6,8 +6,6 @@ type MovieListProps = {
   title: string;
 };
 export default function MovieLists({ title }: MovieListProps) {
-  console.log("movie data:", listingMoviesData);
-
   return (
     <div className="mx-5 max-w-360">
       <MovieClassifies title={title} />

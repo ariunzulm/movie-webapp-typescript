@@ -7,18 +7,9 @@ import {
 import carouselData from "../moviesData/carouselMoviesData";
 import { useState } from "react";
 import HeroCarousel from "./HeroSection";
+import { HeroMovieCard } from "./HeroMovieCard";
 
-type HeroCarouselProps = {
-  data: {
-    id: number;
-    movieName: string;
-    description: string;
-    rating: number;
-    posterImage: string;
-  };
-  onClick: string;
-};
-export function UpcomingCarousel({ data }: HeroCarouselProps) {
+export function UpcomingCarousel() {
   const [current, setCurrent] = useState(0);
 
   const handleApiReady = (api: CarouselApi) => {
@@ -32,13 +23,13 @@ export function UpcomingCarousel({ data }: HeroCarouselProps) {
   };
 
   return (
-    <div className="w-full relative">
-      <Carousel setApi={handleApiReady} className="w-full max-w-360">
+    <div className="w-full relative mt-20">
+      <Carousel setApi={handleApiReady} className="w-full">
         <CarouselContent>
           {carouselData.map((data, i) => {
             return (
               <CarouselItem key={i}>
-                <HeroCarousel data={data} />
+                <HeroMovieCard({ data, current }: HeroCarouselProps) />
               </CarouselItem>
             );
           })}
