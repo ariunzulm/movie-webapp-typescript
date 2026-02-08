@@ -17,7 +17,7 @@ type HeroCarouselProps = {
   prevSlide?: () => void;
   nextSlide?: () => void;
 };
-export default function HeroCarousel({ data, current }: HeroCarouselProps) {
+export default function HeroCarouselllllll() {
   const [slide, setSlide] = useState(carouselMoviesData);
   const [index, setIndex] = useState(0);
 

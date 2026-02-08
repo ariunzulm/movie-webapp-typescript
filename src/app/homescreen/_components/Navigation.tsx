@@ -8,7 +8,7 @@ import { Search, X, ChevronDown } from "lucide-react";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 
-export default function HomeNavigation() {
+export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div className="bg-gray-50 w-full">

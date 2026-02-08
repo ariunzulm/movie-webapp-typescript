@@ -1,26 +1,31 @@
 "use client";
-import HomeNavigation from "./homescreen/_components/HomeNavigation";
-import MovieHomeListings from "./homescreen/_components/HeroMovieCarousel";
 
-import FooterSection from "./homescreen/_components/FooterSection";
-import HeaderResponsive from "./homescreen/_components/HeaderResponsive";
-import MovieLists from "./homescreen/_components/MovieLists";
-import Navigation from "./homescreen/_components/Nativagation";
-import { UpcomingCarousel } from "./homescreen/_components/UpcomingCarousel";
-import Link from "next/link";
-export default function Home() {
+import HomeNavigation from "./homescreen/_components/Navigation";
+import HeroMoviesCarousel from "./homescreen/_components/HeroCarousel";
+import MovieHomeListings from "./homescreen/_components/MovieHomeListings";
+import Footer from "./homescreen/_components/Footer";
+
+type HomeProps = {
+  movie: string;
+};
+export default function Home({ movie }: HomeProps) {
   return (
-    <div className="min-h-screen bg-gray-50 max-w-360 lg:mx-auto">
+    <div className="min-h-screen bg-background">
       <HomeNavigation />
-      {/* <UpcomingCarousel /> */}
-      <MovieHomeListings />
-
-      {/* <div className="flex flex-col gap-8">
-        <MovieLists title={"Upcoming"} />
-        <MovieLists title={"Popular"} />
-        <MovieLists title={"Top rated"} />
-      </div>
-      <FooterSection /> */}
+      <section className="relative">
+        <HeroMoviesCarousel />
+      </section>
+      <main className="max-w-360 mx-auto sm:px-6 lg:px-8">
+        <section className="py-8 md:py-12">
+          <MovieHomeListings title="Upcoming" />
+        </section>
+        <div className="space-y-12 md:space-y-16 pb-16">
+          <MovieHomeListings title="Upcoming" />
+          <MovieHomeListings title="Popular" />
+          <MovieHomeListings title="Top rated" />
+        </div>
+      </main>
+      <Footer />
       {/* <Link href="/upcomingPage">Upco</Link> */}
     </div>
   );

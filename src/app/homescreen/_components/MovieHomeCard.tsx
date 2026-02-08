@@ -11,14 +11,14 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
-type HeroMovieCardProps = {
+type MovieHomeCardProps = {
   movie: {
     movieName: string;
     rating: number;
     posterImage: string;
   };
 };
-export function HeroMovieCard({ movie }: HeroMovieCardProps) {
+export function MovieHomeCard({ movie }: MovieHomeCardProps) {
   const { movieName, posterImage, rating } = movie;
   return (
     <Card className="relative mx-auto w-full max-w-sm pt-0 shadow-2xl border-none">
@@ -30,7 +30,6 @@ export function HeroMovieCard({ movie }: HeroMovieCardProps) {
           className="relative z-20 w-full object-cover rounded-t-xl brightness-100 dark:brightness-40"
         />
       </div>
-
       <CardHeader>
         <CardAction>
           <Badge variant="secondary">
@@ -42,13 +41,11 @@ export function HeroMovieCard({ movie }: HeroMovieCardProps) {
           </Badge>
         </CardAction>
         <p className="text-sm leading-5 text-[#09090B]">Now Playing:</p>
-        <CardTitle className="text-[18px] font-semibold leading-4 lg:text-lg">
-          {movieName}
-        </CardTitle>
       </CardHeader>
-      {/* <CardDescription className="text-sm max-w-sm px-6">
-        Elphaba, a misunderstood young woman because of her green
-      </CardDescription> */}
+      <CardTitle className="text-[18px] px-6 font-semibold leading-4 md:text-xl lg:text-2xl">
+        {movieName}
+      </CardTitle>
+
       <CardFooter>
         <Button className="w-fit text-sm px-2 py-4 text-white bg-gray-900 cursor-pointer">
           <Play />
