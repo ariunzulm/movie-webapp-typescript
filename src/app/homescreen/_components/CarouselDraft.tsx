@@ -3,7 +3,7 @@ import { CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Star } from "lucide-react";
 import { Play } from "lucide-react";
 import { useState } from "react";
-import carouselMoviesData from "../moviesData/carouselMoviesData";
+import carouselMoviesData from "../homeScreeenData/carouselMoviesData";
 
 type HeroCarouselProps = {
   current: number;

@@ -8,7 +8,7 @@ import {
   CarouselPrevious,
   type CarouselApi,
 } from "@/components/ui/carousel";
-import carouselMoviesData from "../moviesData/carouselMoviesData";
+import carouselMoviesData from "../homeScreeenData/carouselMoviesData";
 import { HeroCarouselCard } from "./HeroCarouselCard";
 
 type HeroCarouselCardProps = {
@@ -40,13 +40,13 @@ export default function HeroCarousel() {
   }, [api]);
 
   return (
-    <div className="mx-auto mt-10 w-full h-fit relative">
-      <Carousel setApi={setApi} className="shadow-2xl">
+    <div className="mt-10 w-full h-fit relative">
+      <Carousel setApi={setApi}>
         <CarouselContent>
           {carouselMoviesData.map((movieCard, index) => {
             return (
               <CarouselItem key={index}>
-                <Card className="border-none">
+                <Card className="border-none bg-transparent">
                   <HeroCarouselCard movie={movieCard} />
                 </Card>
               </CarouselItem>

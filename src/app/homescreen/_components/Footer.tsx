@@ -12,7 +12,7 @@ export default function Footer() {
           © 2024 Movie Z. All Rights Reserved.
         </p>
       </div>
-      <div className="flex justify-between gap-3 lg:gap-24 ">
+      <div className="flex justify-between gap-50">
         <div className="flex flex-col gap-3">
           <div className="flex gap-3 items-center">
             <img src="/email.svg" alt="email icon" />
@@ -29,14 +29,12 @@ export default function Footer() {
             </div>
           </div>
         </div>
-        <div className="flex flex-col gap-3 w-28.25">
+        <div className="flex flex-col gap-3 ">
           <p>Follow us</p>
-          <div className="flex flex-col gap-3 lg:flex-row justify-between">
-            <p>Facebook</p>
-            <p>Instagram</p>
-            <p>Twitter</p>
-            <p>Youtube</p>
-          </div>
+          <p>Facebook</p>
+          <p>Instagram</p>
+          <p>Twitter</p>
+          <p>Youtube</p>
         </div>
       </div>
     </div>

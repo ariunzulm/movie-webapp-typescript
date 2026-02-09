@@ -1,10 +1,11 @@
 const listingMoviesData = [
   {
     id: 1,
-
+    genre: "action",
     description: "Movie Title",
     movieName: "Movie Title",
     rating: 7.5,
+    genre: "action",
     posterImage: "/list-10.png",
   },
   {
@@ -12,6 +13,7 @@ const listingMoviesData = [
     description: "Movie Title",
     movieName: "Movie Title",
     rating: 8.2,
+    genre: "action",
     posterImage: "/list-9.jpg",
   },
   {
@@ -19,6 +21,7 @@ const listingMoviesData = [
     description: "Movie Title",
     movieName: "Movie Title",
     rating: 6.9,
+    genre: "action",
     posterImage: "/list-3.jpg",
   },
   {
@@ -26,6 +29,7 @@ const listingMoviesData = [
     description: "Movie Title",
     movieName: "Movie Title",
     rating: 7.8,
+    genre: "action",
     posterImage: "/list-4.jpg",
   },
   {
@@ -33,6 +37,7 @@ const listingMoviesData = [
     description: "Movie Title",
     movieName: "Movie Title",
     rating: 6.5,
+    genre: "action",
     posterImage: "/list-6.jpg",
   },
   {
@@ -40,6 +45,7 @@ const listingMoviesData = [
     description: "Movie Title",
     movieName: "Movie Title",
     rating: 8.0,
+    genre: "action",
     posterImage: "/list-7.jpg",
   },
   {
@@ -47,6 +53,7 @@ const listingMoviesData = [
     description: "Movie Title",
     movieName: "Movie Title",
     rating: 7.2,
+    genre: "action",
     posterImage: "/list-8.jpg",
   },
   {
@@ -54,6 +61,7 @@ const listingMoviesData = [
     description: "Movie Title",
     movieName: "Movie Title",
     rating: 6.8,
+    genre: "action",
     posterImage: "/list-9.jpg",
   },
   {
@@ -61,6 +69,7 @@ const listingMoviesData = [
     description: "Movie Title",
     movieName: "Movie Title",
     rating: 7.9,
+    genre: "action",
     posterImage: "/list-10.png",
   },
   {
@@ -68,6 +77,7 @@ const listingMoviesData = [
     description: "Movie Title",
     movieName: "Movie Title",
     rating: 8.5,
+    genre: "action",
     posterImage: "/list-11.png",
   },
   {
@@ -75,6 +85,7 @@ const listingMoviesData = [
     description: "Movie Title",
     movieName: "Movie Title",
     rating: 7.3,
+    genre: "action",
     posterImage: "/list-12.png",
   },
   {
@@ -82,6 +93,7 @@ const listingMoviesData = [
     description: "Movie Title",
     movieName: "Movie Title",
     rating: 8.0,
+    genre: "action",
     posterImage: "/list-7.jpg",
   },
 ];
