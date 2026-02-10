@@ -1,54 +1,38 @@
-import * as React from "react";
-import { Card, CardContent } from "@/components/ui/card";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-  type CarouselApi,
 } from "@/components/ui/carousel";
-import carouselMoviesData from "../homeScreeenData/carouselMoviesData";
-import { HeroCarouselCard } from "./HeroCarouselCard";
 
-type HeroCarouselCardProps = {
-  movie: {
-    id: number;
-    movieName: string;
-    description: string;
-    rating: number;
-    posterImage: string;
-  };
+import HeroCarouselCard from "./HeroCarouselCard";
+import { Movie } from "@/lib/types";
+
+type HeroCarouselProps = {
+  movies: Movie[];
 };
 
-export default function HeroCarousel() {
-  const [api, setApi] = React.useState<CarouselApi>();
-  const [current, setCurrent] = React.useState(0);
-  const [count, setCount] = React.useState(0);
-
-  React.useEffect(() => {
-    if (!api) {
-      return;
-    }
-
-    setCount(api.scrollSnapList().length);
-    setCurrent(api.selectedScrollSnap() + 1);
-
-    api.on("select", () => {
-      setCurrent(api.selectedScrollSnap() + 1);
-    });
-  }, [api]);
-
+const HeroCarousel = async ({ movies }: HeroCarouselProps) => {
   return (
-    <div className="mt-10 w-full h-fit relative">
-      <Carousel setApi={setApi}>
+    <div className="w-full h-fit relative">
+      <Carousel
+        opts={{
+          align: "start",
+          loop: true,
+        }}
+        className="w-full"
+      >
         <CarouselContent>
-          {carouselMoviesData.map((movieCard, index) => {
+          {movies.map((movie) => {
             return (
-              <CarouselItem key={index}>
-                <Card className="border-none bg-transparent">
-                  <HeroCarouselCard movie={movieCard} />
-                </Card>
+              <CarouselItem key={movie.id} className="border-none">
+                <HeroCarouselCard
+                  movieName={movie.title}
+                  description={movie.overview}
+                  posterImage={movie.backdrop_path}
+                  rating={movie.vote_average}
+                />
               </CarouselItem>
             );
           })}
@@ -60,9 +44,7 @@ export default function HeroCarousel() {
           <CarouselNext />
         </div>
       </Carousel>
-      {/* <div className="text-muted-foreground py-2 text-center text-sm">
-        {current} of {count}
-      </div> */}
     </div>
   );
-}
+};
+export default HeroCarousel;

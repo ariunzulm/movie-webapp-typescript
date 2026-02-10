@@ -1,6 +1,10 @@
+"use client";
+
 import Footer from "../homescreen/_components/Footer";
 import Navigation from "../homescreen/_components/Navigation";
-import MovieDetailsPage from "./_components/MovieDetailsPage";
+import SeeMoreHero from "./_components/DetailsHero";
+
+import { PaginationDemo } from "./_components/Pagination";
 
 type HomeProps = {
   movie: {
@@ -19,7 +23,10 @@ export default function Home({ movie }: HomeProps) {
       <Navigation />
       <main className="max-w-360 mx-auto sm:px-6 lg:px-8">
         <section className="py-8 md:py-12">
-          <MovieDetailsPage movie={movie} title="upcoming" />
+          <SeeMoreHero movie={movie} title="upcoming" />
+        </section>
+        <section className="py-8 md:py-12">
+          <PaginationDemo />
         </section>
       </main>
       <Footer />

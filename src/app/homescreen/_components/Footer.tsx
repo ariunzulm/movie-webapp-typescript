@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <div className="bg-indigo-700 w-full flex flex-col gap-7 py-10 px-5 text-sm text-white font-normal xl:flex-row lg:gap-20 xl:gap-30">
+    <div className="bg-gray-700 w-full flex flex-col gap-7 py-10 px-5 text-sm text-white font-normal xl:flex-row lg:gap-20 xl:gap-30">
       <div className="flex flex-col gap-2">
         <div className="flex gap-2">
           <img src="/film.svg" alt="Movie Z logo" className="w-5 h-5" />

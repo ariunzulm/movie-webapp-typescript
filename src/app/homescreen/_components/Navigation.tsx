@@ -1,3 +1,4 @@
+"use client";
 import {
   InputGroup,
   InputGroupAddon,
@@ -10,8 +11,9 @@ import { cn } from "@/lib/utils";
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
+
   return (
-    <div className="bg-gray-50 w-full">
+    <div className="bg-transparent w-full">
       <header className="absolute inset-x-0 top-0 z-50">
         <nav className="flex items-center justify-between p-5 lg:px-8">
           {isOpen ? (
@@ -20,7 +22,7 @@ export default function Navigation() {
             <div className="flex">
               <a
                 href="#"
-                className="-m-1.5 p-1.5 flex flex-row items-center gap-2 text-indigo-700 italic font-bold"
+                className="-m-1.5 p-1.5 flex flex-row items-center gap-2 text-gray-700 italic font-bold"
               >
                 <img src="/logo.svg" alt="Logo" className="h-8 w-auto" />
               </a>

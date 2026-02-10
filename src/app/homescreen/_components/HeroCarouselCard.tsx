@@ -3,7 +3,6 @@ import { Play, Star } from "lucide-react";
 
 import {
   Card,
-  CardAction,
   CardDescription,
   CardFooter,
   CardHeader,
@@ -11,23 +10,27 @@ import {
 } from "@/components/ui/card";
 
 type HeroCarouselCardProps = {
-  movie: {
-    id: number;
-    movieName: string;
-    description: string;
-    rating: number;
-    posterImage: string;
-  };
+  movieName: string;
+  description: string;
+  rating: number;
+  posterImage: string;
 };
-export function HeroCarouselCard({ movie }: HeroCarouselCardProps) {
-  const { id, movieName, posterImage, description, rating } = movie;
+
+const HeroCarouselCard = ({
+  movieName,
+  posterImage,
+  description,
+  rating,
+}: HeroCarouselCardProps) => {
+  const backdropUrl = `https://image.tmdb.org/t/p/original${posterImage}`;
+
   return (
     <Card className="w-full bg-transparent border-none pointer-events-auto">
       <div className="relative h-100 w-full overflow-hidden md:h-125">
         <img
-          src={posterImage}
+          src={backdropUrl}
           alt={`${movieName} poster`}
-          className="z-20 w-full h-full object-cover object-center rounded-xl transition-transform duration-500 brightness-100 dark:brightness-50"
+          className="z-20 w-full h-full object-cover object-center transition-transform duration-500 brightness-100 dark:brightness-50"
         />
         <div className="absolute inset-0 z-50 flex flex-col justify-end items-start text-white p-6 md:p-16 lg:p-20 md:items-start lg:items-start">
           <CardHeader>
@@ -46,7 +49,7 @@ export function HeroCarouselCard({ movie }: HeroCarouselCardProps) {
             {description}
           </CardDescription>
           <CardFooter>
-            <Button className="w-full border border-gray-50gap-2 hover:bg-primary/10 hover:text-primary transition-colors group/btn">
+            <Button className="w-full border border-gray-50 gap-2 hover:bg-primary/10 hover:text-primary transition-colors group/btn">
               <Play className="w-4 h-4 group-hover/btn:fill-current transition-all" />
               Watch trailer
             </Button>
@@ -55,4 +58,6 @@ export function HeroCarouselCard({ movie }: HeroCarouselCardProps) {
       </div>
     </Card>
   );
-}
+};
+
+export default HeroCarouselCard;

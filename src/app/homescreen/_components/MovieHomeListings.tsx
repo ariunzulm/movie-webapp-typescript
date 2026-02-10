@@ -1,31 +1,30 @@
-import listingMoviesData from "../homeScreeenData/listingMoviesData";
+import MovieHomeCard from "./MovieHomeCard";
 import MovieListingTitles from "./MovieListingTitles";
-import { MovieHomeCard } from "./MovieHomeCard";
-
+import { Movie } from "@/lib/types";
 type MovieHomeListingsProps = {
   title: string;
-  movie: {
-    movieName: string;
-    description: string;
-    id: number;
-    rating: number;
-    genre: string;
-    posterImage: string;
-  };
+  movies: Movie[];
 };
 
-export default function MovieHomeListings({
-  title,
-  movie,
-}: MovieHomeListingsProps) {
+const MovieHomeListings = async ({ title, movies }: MovieHomeListingsProps) => {
   return (
     <div className="mx-auto max-w-360">
       <MovieListingTitles title={title} />
+
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
-        {listingMoviesData.map((movie) => {
-          return <MovieHomeCard key={movie.id} movie={movie} />;
+        {movies.map((movie) => {
+          return (
+            <MovieHomeCard
+              key={movie.id}
+              movieName={movie.title}
+              description={movie.overview}
+              posterImage={movie.poster_path}
+              rating={movie.vote_average}
+            />
+          );
         })}
       </div>
     </div>
   );
-}
+};
+export default MovieHomeListings;
