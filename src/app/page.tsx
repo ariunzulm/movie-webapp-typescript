@@ -7,7 +7,7 @@ import {
   getPopularMovies,
   getTopRatedMovies,
   getUpcomingMovies,
-} from "@/lib/api";
+} from "@/lib/_homescreenLib/api";
 import HeroCarousel from "./homescreen/_components/HeroCarousel";
 
 export default async function Home() {
@@ -23,16 +23,15 @@ export default async function Home() {
 
       <main className="max-w-360 mx-auto sm:px-6 lg:px-8">
         <section className="py-8 md:py-12">
-          <MovieHomeListings title="NowPlaying" movies={nowPlaying} />
+          <MovieHomeListings title="Now playing" movies={nowPlaying} />
         </section>
         <div className="pb-16">
           <MovieHomeListings title="Popular" movies={popular} />
-          <MovieHomeListings title="Upcoming" movies={upcoming} />
+          <MovieHomeListings title="Up coming" movies={upcoming} />
           <MovieHomeListings title="Top rated " movies={topRated} />
         </div>
       </main>
       <Footer />
-      {/* <Link href="/upcomingPage"></Link> */}
     </div>
   );
 }

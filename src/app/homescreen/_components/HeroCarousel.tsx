@@ -7,7 +7,7 @@ import {
 } from "@/components/ui/carousel";
 
 import HeroCarouselCard from "./HeroCarouselCard";
-import { Movie } from "@/lib/types";
+import { Movie } from "@/lib/_homescreenLib/types";
 
 type HeroCarouselProps = {
   movies: Movie[];
@@ -15,7 +15,7 @@ type HeroCarouselProps = {
 
 const HeroCarousel = async ({ movies }: HeroCarouselProps) => {
   return (
-    <div className="w-full h-fit relative">
+    <div className="w-full h-fit relative mt-15">
       <Carousel
         opts={{
           align: "start",

@@ -18,10 +18,7 @@ const options = {
 };
 
 export const getPopularMovies = async (): Promise<Response> => {
-  const response = await fetch(
-    `https://api.themoviedb.org/3/movie/popular?language=en-US&page=1`,
-    options,
-  );
+  const response = await fetch(`${baseUrl}${popularMovies}`, options);
   const data = await response.json();
 
   return data;

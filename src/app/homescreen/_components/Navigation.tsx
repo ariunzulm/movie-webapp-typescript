@@ -13,7 +13,7 @@ export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="bg-transparent w-full">
+    <div className="bg-gray-50 w-full">
       <header className="absolute inset-x-0 top-0 z-50">
         <nav className="flex items-center justify-between p-5 lg:px-8">
           {isOpen ? (
