@@ -1,7 +1,7 @@
 import Link from "next/link";
 import MovieHomeCard from "./MovieHomeCard";
 import MovieListingTitles from "./MovieListingTitles";
-import { Movie } from "@/lib/_homescreenLib/types";
+import { Movie } from "@/lib/types";
 type MovieHomeListingsProps = {
   title: string;
   movies: Movie[];

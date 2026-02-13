@@ -1,25 +1,9 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { getMovieById } from "@/lib/api/get-moviesById";
+import { ArrowLeft, Download, Play, Plus, Volume2 } from "lucide-react";
 
-import {
-  Card,
-  CardAction,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-
-import { getMovieById } from "@/lib/movieDetailsLib/detailsApi";
-import {
-  Calendar,
-  CalendarDays,
-  Dot,
-  Play,
-  Star,
-  UserRound,
-} from "lucide-react";
-import Navigation from "../homescreen/_components/Navigation";
+import Link from "next/link";
 
 type DetailsCardProps = {
   params: Promise<{ movieId: string }>;
@@ -29,83 +13,129 @@ const DetailsCard = async ({ params }: DetailsCardProps) => {
   const { movieId } = await params;
 
   const movie = await getMovieById(movieId);
-  const posterUrl = `https://image.tmdb.org/t/p/original${movie.backdrop_path}`;
+
+  const backdropUrl = `https://image.tmdb.org/t/p/original${movie.backdrop_path}`;
+
   return (
-    <div>
-      <Navigation />
-      <Card className="relative mx-auto w-full pt-0 border-none shadow-md mt-15">
-        <div className="absolute inset-0 z-30 aspect-video bg-black/5" />
-        <CardHeader className="pt-5">
-          <CardTitle className="text-2xl sm:text-3lg md:text-xl font-bold leading-tight line-clamp-2 text-black group-hover:text-primary transition-colors">
-            {movie.title}
-          </CardTitle>
-          <Badge variant="secondary" className="flex justify-between w-full">
-            <div className="flex items-center gap-1.5 px-5 py-1.5 ">
-              <CalendarDays className=" text-gray-700 text-sm" />
-              <span className="text-sm text-gray-700">
-                {movie.release_date}
-              </span>
-              <Dot />
-              <span className="text-sm text-gray-700">PG</span>
-              <Dot />
-              <span className="text-sm text-gray-700">{movie.runtime} min</span>
-            </div>
-
-            <div className="flex items-center gap-1.5 px-5 py-1.5 ">
-              <Star fill="#FDE047" className="text-amber-200" />
-              <p className="text-base font-semibold text-gray-900">
-                {movie.vote_average}
-              </p>
-              <p className="text-sm text-gray-400">/10</p>
-            </div>
-
-            <span className="text-sm text-gray-700 flex gap-1.5 items-center">
-              <UserRound />
-              {movie.vote_count}
-            </span>
-          </Badge>
-        </CardHeader>
-        <div className="relative ">
-          <img
-            src={posterUrl}
-            alt={movie.title}
-            className="relative z-20 aspect-video w-full object-cover"
-          />
-          <Button className="absolute flex justify-end w-fit shadow-xl bg-gray-900 text-white border border-gray-500 gap-2 hover:bg-primary/10 hover:text-primary transition-colors group/btn">
-            <Play className="w-4 h-4 group-hover/btn:fill-current transition-all" />
-            Play trailer
+    <div className="min-h-screen bg-gray-50 text-black">
+      <div className="w-full relative">
+        <div className="relative w-full h-[80vh]">
+          <div className="absolute inset-0">
+            <img
+              src={backdropUrl}
+              alt={movie.title}
+              className="aspect-video h-full w-full object-cover"
+            />
+            <div className="absolute inset-0 bg-linear-to-t from-black via-black/50 to-transparent" />
+            <div className="absolute inset-0 bg-linear-to-r from-black/80 via-transparent to-transparent" />
+          </div>
+          <Link href="/">
+            <Button
+              variant="ghost"
+              size="icon"
+              className="absolute top-6 left-6 z-50 h-10 w-10 rounded-full text-white bg-black/30 hover:bg-black/60 backdrop-blur-sm"
+            >
+              <ArrowLeft className="h-6 w-6" />
+            </Button>
+          </Link>
+          <Button
+            variant="ghost"
+            size="icon"
+            className="absolute top-6 right-6 z-50 h-10 w-10 rounded-full text-white bg-black/30 hover:bg-black/60 backdrop-blur-sm"
+          >
+            <Volume2 className="h-5 w-5" />
           </Button>
         </div>
-        <CardFooter className="p-4 pt-0 flex gap-10 items-start">
-          <img
-            src={posterUrl}
-            alt={movie.title}
-            className="relative z-20 aspect-video w-25 h-37 object-cover shadow-md"
-          />
-          <div className="flex flex-col gap-4">
-            <div className="grid grid-cols-2 gap-1">
-              <Button className="w-fit shadow-xs rounded-full text-black border border-gray-200 hover:bg-primary/10 hover:text-primary transition-colors group/btn">
-                Fairy Tale
+
+        <div className="absolute bottom-5 left-0 p-12 z-40">
+          <div className="max-w-7xl mx-auto text-white">
+            <h1 className="text-3xl md:text-4xl font-bold mb-8 tracking-tight">
+              {movie.title}
+            </h1>
+
+            <div className="flex items-center gap-4 sm:text-md">
+              <Button
+                size="lg"
+                className="bg-white text-black hover:bg-white/90 font-semibold px-8 py-6 text-lg rounded-md"
+              >
+                <Play className="w-6 h-6 mr-2 fill-current" />
+                Play Trailer
               </Button>
-              <Button className="w-fit shadow-xs rounded-full text-black border border-gray-200 hover:bg-primary/10 hover:text-primary transition-colors group/btn">
-                Pop Musical
+
+              <Button
+                size="icon"
+                variant="ghost"
+                className="h-12 w-12 rounded-full border-2 border-white/50 bg-black/30 hover:bg-white/10 backdrop-blur-sm"
+              >
+                <Plus className="w-6 h-6" />
               </Button>
-              <Button className="w-fit shadow-xs rounded-full text-black border border-gray-200 hover:bg-primary/10 hover:text-primary transition-colors group/btn">
-                Fantasy
+
+              <Button
+                size="icon"
+                variant="ghost"
+                className="h-12 w-12 rounded-full border-2 border-white/50 bg-black/30 hover:bg-white/10 backdrop-blur-sm"
+              >
+                <Download className="w-6 h-6" />
               </Button>
-              <Button className="w-fit shadow-xs rounded-full text-black border border-gray-200 hover:bg-primary/10 hover:text-primary transition-colors group/btn">
-                Musical
-              </Button>
-              <Button className="w-fit shadow-xs rounded-full text-black border border-gray-200 hover:bg-primary/10 hover:text-primary transition-colors group/btn">
-                Romance
+
+              <Button
+                variant="ghost"
+                className="px-6 py-6 text-base font-medium border-2 border-white/50 bg-black/30 hover:bg-white/10 backdrop-blur-sm rounded-md"
+              >
+                Similars
               </Button>
             </div>
-            <CardDescription className="text-base font-medium text-muted-foreground tracking-normal">
-              {movie.overview}
-            </CardDescription>
           </div>
-        </CardFooter>
-      </Card>
+        </div>
+      </div>
+
+      <div className="grid p-8 md:grid-cols-3 gap-8">
+        <div>
+          <div className="space-y-3 text-sm">
+            <div className="flex items-center gap-2 text-zinc-600">
+              <span className="text-zinc-600 font-semibold">Release:</span>
+              <span>{movie.release_date}</span>
+            </div>
+
+            <div className="flex items-center gap-2 text-zinc-600">
+              <span className="text-zinc-600 font-semibold">Runtime:</span>
+              <span>{movie.runtime} min</span>
+            </div>
+
+            <div className="flex items-center gap-2 text-zinc-600">
+              <span className="text-zinc-600 font-semibold">Rating:</span>
+              <span className="flex items-center gap-1">
+                <span className="text-yellow-400">★</span>
+                {movie.vote_average}/10
+              </span>
+              <span className="text-zinc-600">({movie.vote_count} votes)</span>
+            </div>
+          </div>
+        </div>
+        <div className="md:col-span-2 space-y-6">
+          <div>
+            <h3 className="text-xl font-semibold mb-3">Overview</h3>
+            <p className="text-zinc-600 leading-relaxed text-base">
+              {movie.overview}
+            </p>
+          </div>
+
+          <div>
+            <h3 className="text-xl font-semibold mb-3">Genres</h3>
+            <div className="flex flex-wrap gap-2">
+              {movie.genres?.map((genre: any) => (
+                <Badge
+                  key={genre.id}
+                  variant="secondary"
+                  className="bg-zinc-800 hover:bg-zinc-700 text-white border-zinc-700 px-4 py-2 text-sm rounded-full cursor-pointer transition-colors"
+                >
+                  {genre.name}
+                </Badge>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

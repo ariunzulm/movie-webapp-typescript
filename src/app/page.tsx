@@ -2,13 +2,11 @@ import MovieHomeListings from "./homescreen/_components/MovieHomeListings";
 import Footer from "./homescreen/_components/Footer";
 import Navigation from "./homescreen/_components/Navigation";
 
-import {
-  getNowPlayingMovies,
-  getPopularMovies,
-  getTopRatedMovies,
-  getUpcomingMovies,
-} from "@/lib/_homescreenLib/api";
 import HeroCarousel from "./homescreen/_components/HeroCarousel";
+import { getPopularMovies } from "@/lib/api/get-popular-movies";
+import { getUpcomingMovies } from "@/lib/api/get-upcoming-movies";
+import { getTopRatedMovies } from "@/lib/api/get-toprated-movies";
+import { getNowPlayingMovies } from "@/lib/api/get-nowPlaying-movies";
 
 export default async function Home() {
   const { results: popular } = await getPopularMovies();
