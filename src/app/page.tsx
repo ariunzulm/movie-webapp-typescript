@@ -23,7 +23,7 @@ export default async function Home() {
         <section className="py-8 md:py-12">
           <MovieHomeListings title="Now playing" movies={nowPlaying} />
         </section>
-        <div className="pb-16">
+        <div className="pb-10">
           <MovieHomeListings title="Popular" movies={popular} />
           <MovieHomeListings title="Up coming" movies={upcoming} />
           <MovieHomeListings title="Top rated " movies={topRated} />

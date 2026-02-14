@@ -32,6 +32,7 @@ const HeroCarousel = async ({ movies }: HeroCarouselProps) => {
                   description={movie.overview}
                   posterImage={movie.backdrop_path}
                   rating={movie.vote_average}
+                  date={movie.release_date}
                 />
               </CarouselItem>
             );

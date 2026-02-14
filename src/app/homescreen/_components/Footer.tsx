@@ -1,42 +1,47 @@
 export default function Footer() {
   return (
-    <div className="bg-gray-700 w-full flex flex-col gap-7 py-10 px-5 text-sm text-white font-normal xl:flex-row lg:gap-20 xl:gap-30">
+    <footer className="bg-gray-900 w-full flex justify-between py-10 px-10 text-sm text-white">
       <div className="flex flex-col gap-2">
         <div className="flex gap-2">
-          <img src="/film.svg" alt="Movie Z logo" className="w-5 h-5" />
-          <p className="font-semibold italic text-base leading-normal">
-            Movie Z
-          </p>
+          <div className="border border-gray-200 rounded-xl p-2 flex items-center justify-center">
+            <svg
+              className="w-6 h-6 text-white"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path d="M8 5v14l11-7z" />
+            </svg>
+          </div>
+          <span className="text-2xl">PineBy</span>
         </div>
         <p className="font-normal leading-5">
           © 2024 Movie Z. All Rights Reserved.
         </p>
       </div>
-      <div className="flex justify-between gap-50">
-        <div className="flex flex-col gap-3">
-          <div className="flex gap-3 items-center">
-            <img src="/email.svg" alt="email icon" />
-            <div>
-              <p>Email:</p>
-              <p>support@movieZ.com</p>
-            </div>
-          </div>
-          <div className="flex gap-3 items-center">
-            <img src="/phone.svg" alt="Phone icon" />
-            <div>
-              <p>Phone:</p>
-              <p>+976 (11) 123-4567</p>
-            </div>
+
+      <div className="flex flex-col gap-3">
+        <div className="flex gap-3 items-center">
+          <img src="/email.svg" alt="email icon" />
+          <div>
+            <p>Email:</p>
+            <p>support@PineBy.com</p>
           </div>
         </div>
-        <div className="flex flex-col gap-3 ">
-          <p>Follow us</p>
-          <p>Facebook</p>
-          <p>Instagram</p>
-          <p>Twitter</p>
-          <p>Youtube</p>
+        <div className="flex gap-3 items-center">
+          <img src="/phone.svg" alt="Phone icon" />
+          <div>
+            <p>Phone:</p>
+            <p>+976 (11) 123-4567</p>
+          </div>
         </div>
       </div>
-    </div>
+      <div className="flex flex-col gap-3 ">
+        <p>Follow us</p>
+        <p>Facebook</p>
+        <p>Instagram</p>
+        <p>Twitter</p>
+        <p>Youtube</p>
+      </div>
+    </footer>
   );
 }
