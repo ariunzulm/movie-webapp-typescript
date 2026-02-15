@@ -84,8 +84,8 @@ const MovieInfo = async ({ params }: DetailsCardProps) => {
           <span className="font-semibold">Rating:</span>
           <span className="flex items-center gap-1 text-muted-foreground ">
             <span className=" text-yellow-400 fill-yellow-400">★</span>
-            {movie.vote_average.toFixed(1)} /10 (
-            {movie.vote_count.toLocaleString()} votes)
+            {Math.floor(movie.vote_average * 10) / 10} (
+            {movie.vote_count} votes)
           </span>
         </div>
         <div className="h-0.5 bg-zinc-200 w-full" />

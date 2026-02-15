@@ -1,9 +1,5 @@
 "use client";
-import {
-  InputGroup,
-  InputGroupAddon,
-  InputGroupInput,
-} from "@/components/ui/input-group";
+import { InputGroup, div, InputGroupInput } from "@/components/ui/input-group";
 import { ModeToggle } from "./ModeToggle";
 import { Search, X, ChevronDown, Clapperboard } from "lucide-react";
 import { useState } from "react";
@@ -38,6 +34,12 @@ export default function Navigation() {
               isOpen ? "flex-1" : "w-10",
             )}
           >
+            <div className="h-8 w-8 cursor-pointer flex items-center justify-center text-white  hover:text-white/80 ">
+              <Link href="/searchPage">
+                <Search className="w-6 h-6" />
+              </Link>
+            </div>
+
             <InputGroupInput
               placeholder="Search..."
               className={cn(
@@ -45,27 +47,8 @@ export default function Navigation() {
                 isOpen ? "block w-full" : "hidden md:block",
               )}
             />
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setIsOpen(!isOpen)}
-              className="h-9 w-9 text-white/90 hover:text-white hover:bg-white/10"
-            >
-              {isOpen ? <X className="hidden absolute right-2" /> : null}
-            </Button>
-
-            <InputGroupAddon
-              className="h-8 w-8 cursor-pointer flex items-center justify-center text-white  hover:text-white/80 "
-              onClick={() => setIsOpen(!isOpen)}
-            >
-              {isOpen && <X className="absolute right-2" />}
-              {!isOpen && (
-                <Link href="/searchPage">
-                  <Search className="ml-6 w-6 h-6" />
-                </Link>
-              )}
-            </InputGroupAddon>
           </InputGroup>
+
           <div className={cn(isOpen && "sm:hidden")}>
             <ModeToggle />
           </div>

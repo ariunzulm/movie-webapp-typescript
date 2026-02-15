@@ -1,7 +1,4 @@
 import MovieHomeListings from "./homescreen/_components/MovieHomeListings";
-import Footer from "./homescreen/_components/Footer";
-import Navigation from "./homescreen/_components/Navigation";
-
 import HeroCarousel from "./homescreen/_components/HeroCarousel";
 import { getPopularMovies } from "@/lib/api/get-popular-movies";
 import { getUpcomingMovies } from "@/lib/api/get-upcoming-movies";
@@ -16,9 +13,7 @@ export default async function Home() {
 
   return (
     <div className="min-h-screen w-full">
-      <Navigation />
       <HeroCarousel movies={popular} />
-
       <main className="max-w-360 mx-auto sm:px-6 lg:px-8">
         <section className="py-8 md:py-12">
           <MovieHomeListings title="Now playing" movies={nowPlaying} />
@@ -29,7 +24,6 @@ export default async function Home() {
           <MovieHomeListings title="Top rated " movies={topRated} />
         </div>
       </main>
-      <Footer />
     </div>
   );
 }

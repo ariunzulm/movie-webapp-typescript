@@ -1,12 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { getMovieById } from "@/lib/api/get-moviesById";
-import { ArrowLeft, Tally1, Volume2 } from "lucide-react";
+import { ArrowLeft, Volume2 } from "lucide-react";
 
 import Link from "next/link";
 import Buttons from "./_components/Bottons";
 import MovieInfo from "./_components/MovieInfo";
 import TrailerPlayer from "./_components/TrailerPlayer";
-
 
 type DetailsCardProps = {
   params: Promise<{ movieId: string }>;
@@ -20,8 +19,8 @@ const DetailsCard = async ({ params }: DetailsCardProps) => {
   const backdropUrl = `https://image.tmdb.org/t/p/original${movie.backdrop_path}`;
 
   return (
-    <div className="min-h-screen text-black">
-      <div className="w-full relative  h-[80vh]">
+    <div className="min-h-screen text-black mt-15">
+      <div className="w-full relative h-[80vh]">
         <div className="relative w-full h-[80vh]">
           <div className="absolute inset-0">
             <img
@@ -50,7 +49,7 @@ const DetailsCard = async ({ params }: DetailsCardProps) => {
           </Button>
         </div>
 
-        <div className="absolute bottom-2 left-0 p-12 z-40 group hover:scale-85">
+        <div className="absolute bottom-2 left-0 p-12 z-40 group hover:scale-105">
           <div className="max-w-7xl mx-auto text-foreground space-y-6">
             <h1 className="text-3xl md:text-4xl lg:text-5xl leading-8">
               {movie.title}
@@ -64,7 +63,5 @@ const DetailsCard = async ({ params }: DetailsCardProps) => {
     </div>
   );
 };
-
-
 
 export default DetailsCard;
