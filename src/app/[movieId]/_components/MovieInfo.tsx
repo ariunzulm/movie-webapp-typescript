@@ -6,11 +6,11 @@ type DetailsCardProps = {
   params: Promise<{ movieId: string }>;
 };
 
-const SectionHeader = ({ title }: { title: string }) => {
+export const SectionHeader = ({ title }: { title: string }) => {
   return (
     <div className="flex items-center gap-3 mb-4">
-      <div className="w-2 h-10 bg-red-500 rounded-full shrink-0" />
-      <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-muted-foreground relative">
+      <div className="w-2 h-6 sm:h-6 md:h-8 lg:h-10 bg-red-500 rounded-full shrink-0" />
+      <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-muted-foreground relative">
         <span className="relative z-10">{title}</span>
       </h2>
     </div>
@@ -38,8 +38,31 @@ const MovieInfo = async ({ params }: DetailsCardProps) => {
   };
 
   return (
-    <div className="p-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
-      <div className="space-y-6  border border-border bg-card p-4 w-full rounded-2xl">
+    <div className="p-6 flex flex-col max-w-6xl mx-auto border-none gap-4">
+      <div className=" space-y-6 p-4 w-full rounded-2xl">
+        <SectionHeader title="Genres" />
+        <div className="flex flex-wrap gap-2">
+          {movie.genres?.map((genre: any) => (
+            <Badge
+              key={genre.id}
+              variant="secondary"
+              className="border border-zinc-200 px-3 py-1.5 text-sm rounded-full transition-colors hover:bg-primary-foreground cursor-pointer"
+            >
+              {genre.name}
+            </Badge>
+          ))}
+        </div>
+        <div className="h-0.5 bg-zinc-200 w-full" />
+      </div>
+
+      <div className=" space-y-6 p-4 w-full rounded-2xl">
+        <SectionHeader title="Overview" />
+        <p className="text-muted-foreground leading-relaxed text-base">
+          {movie.overview}
+        </p>
+      </div>
+      <div className="h-0.5 bg-zinc-200 w-full" />
+      <div className="space-y-6 p-4 w-full">
         <SectionHeader title="Details" />
         <div className="flex items-center gap-3 text-muted-foreground ">
           <Calendar className="w-4 h-4" />
@@ -65,26 +88,7 @@ const MovieInfo = async ({ params }: DetailsCardProps) => {
             {movie.vote_count.toLocaleString()} votes)
           </span>
         </div>
-      </div>
-      <div className=" space-y-6  border border-border p-4 w-full rounded-2xl">
-        <SectionHeader title="Overview" />
-        <p className="text-muted-foreground leading-relaxed text-base">
-          {movie.overview}
-        </p>
-      </div>
-      <div className=" space-y-6  border border-border p-4 w-full rounded-2xl">
-        <SectionHeader title="Genres" />
-        <div className="flex flex-wrap gap-2">
-          {movie.genres?.map((genre: any) => (
-            <Badge
-              key={genre.id}
-              variant="secondary"
-              className="border border-border px-3 py-1.5 text-sm rounded-full transition-colors hover:bg-primary-foreground cursor-pointer"
-            >
-              {genre.name}
-            </Badge>
-          ))}
-        </div>
+        <div className="h-0.5 bg-zinc-200 w-full" />
       </div>
     </div>
   );

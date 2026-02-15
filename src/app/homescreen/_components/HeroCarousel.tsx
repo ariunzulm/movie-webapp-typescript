@@ -8,6 +8,7 @@ import {
 
 import HeroCarouselCard from "./HeroCarouselCard";
 import { Movie } from "@/lib/types";
+import { ArrowLeft, ArrowLeftCircle, ArrowRight } from "lucide-react";
 
 type HeroCarouselProps = {
   movies: Movie[];
@@ -15,7 +16,7 @@ type HeroCarouselProps = {
 
 const HeroCarousel = async ({ movies }: HeroCarouselProps) => {
   return (
-    <div className="w-full h-fit relative ">
+    <div className="w-full h-fit relative mt-15">
       <Carousel
         opts={{
           align: "start",
@@ -38,11 +39,11 @@ const HeroCarousel = async ({ movies }: HeroCarouselProps) => {
             );
           })}
         </CarouselContent>
-        <div className="absolute top-1/2 left-15 bg-black/30 border border-gray-200 hover:bg-black/60 backdrop-blur-sm">
-          <CarouselPrevious className="bg-transparent text-white border border-gray-200 w-8 h-8 rounded-full" />
+        <div className="absolute top-1/2 left-2 flex items-center justify-center z-50 h-8 w-8 text-white rounded-full hover:scale-125 border-2 border-white/50 bg-black/30 hover:bg-white/10 backdrop-blur-sm">
+          <CarouselPrevious className="bg-transparent absolute top-1/2 left-0.2" />
         </div>
-        <div className="absolute top-1/2 -right-8 bg-black/30 hover:bg-black/60 backdrop-blur-sm">
-          <CarouselNext className="bg-transparent text-white" />
+        <div className="absolute top-1/2 right-2 flex items-center justify-center z-50 h-8 w-8 text-white rounded-full hover:scale-125 border-2 border-white/50 bg-black/30 hover:bg-white/10 backdrop-blur-sm">
+          <CarouselNext className="bg-transparent absolute top-1/2 right-0.2" />
         </div>
       </Carousel>
     </div>

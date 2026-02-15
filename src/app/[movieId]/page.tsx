@@ -5,6 +5,8 @@ import { ArrowLeft, Tally1, Volume2 } from "lucide-react";
 import Link from "next/link";
 import Buttons from "./_components/Bottons";
 import MovieInfo from "./_components/MovieInfo";
+import TrailerPlayer from "./_components/TrailerPlayer";
+
 
 type DetailsCardProps = {
   params: Promise<{ movieId: string }>;
@@ -18,7 +20,7 @@ const DetailsCard = async ({ params }: DetailsCardProps) => {
   const backdropUrl = `https://image.tmdb.org/t/p/original${movie.backdrop_path}`;
 
   return (
-    <div className="min-h-screen bg-gray-50 text-black">
+    <div className="min-h-screen text-black">
       <div className="w-full relative  h-[80vh]">
         <div className="relative w-full h-[80vh]">
           <div className="absolute inset-0">
@@ -57,9 +59,12 @@ const DetailsCard = async ({ params }: DetailsCardProps) => {
           </div>
         </div>
         <MovieInfo params={params} />
+        <TrailerPlayer params={params} />
       </div>
     </div>
   );
 };
+
+
 
 export default DetailsCard;

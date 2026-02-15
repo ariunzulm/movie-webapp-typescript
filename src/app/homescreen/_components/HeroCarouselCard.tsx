@@ -39,7 +39,7 @@ const HeroCarouselCard = ({
           alt={`${movieName} backdrop`}
           className="w-full h-full object-cover object-center brightness-100 dark:brightness-50"
         />
-        <div className="absolute inset-0 px-6 p-14 gap-3 flex flex-col justify-end items-start text-white md:p-16 lg:p-20">
+        <div className="absolute inset-0 px-14 p-14 gap-3 flex flex-col justify-end items-start text-white md:p-18 lg:p-20">
           <CardTitle className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl">
             {movieName}
           </CardTitle>

@@ -19,7 +19,7 @@ export default function MovieListingTitles({
         </h2>
       </div>
 
-      <Button className="w-fit text-md font-semibold shadow-lg rounded-lg  text-black bg-transparent backdrop-blur-md border border-zinc-200 gap-1.5 py-1 hover:border-red-700 hover:text-red-700 hover:scale-105 transition-all duration-200 group/btn">
+      <Button className="w-fit text-md font-semibold rounded-lg  text-black bg-transparent border border-transparent gap-1.5 py-1 hover:bg-gray-900 hover:text-white hover:scale-105 transition-all duration-200 group/btn">
         <span>See More</span>
         <ArrowRight className="w-3 h-3" />
       </Button>
