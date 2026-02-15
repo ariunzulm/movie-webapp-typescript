@@ -1,10 +1,7 @@
 import { Badge } from "@/components/ui/badge";
 import { getMovieById } from "@/lib/api/get-moviesById";
 import { Calendar, Clock, Star } from "lucide-react";
-
-type DetailsCardProps = {
-  params: Promise<{ movieId: string }>;
-};
+import { DetailsCardProps } from "../_utils/awaits";
 
 export const SectionHeader = ({ title }: { title: string }) => {
   return (
@@ -19,7 +16,6 @@ export const SectionHeader = ({ title }: { title: string }) => {
 
 const MovieInfo = async ({ params }: DetailsCardProps) => {
   const { movieId } = await params;
-
   const movie = await getMovieById(movieId);
 
   const formatRunTime = (minutes: number): string => {
@@ -38,8 +34,8 @@ const MovieInfo = async ({ params }: DetailsCardProps) => {
   };
 
   return (
-    <div className="p-6 flex flex-col max-w-6xl mx-auto border-none gap-4">
-      <div className=" space-y-6 p-4 w-full rounded-2xl">
+    <div className="p-6 flex flex-col max-w-xl mx-auto gap-4">
+      <div className="space-y-6 p-4 w-full rounded-2xl">
         <SectionHeader title="Genres" />
         <div className="flex flex-wrap gap-2">
           {movie.genres?.map((genre: any) => (
@@ -84,8 +80,8 @@ const MovieInfo = async ({ params }: DetailsCardProps) => {
           <span className="font-semibold">Rating:</span>
           <span className="flex items-center gap-1 text-muted-foreground ">
             <span className=" text-yellow-400 fill-yellow-400">★</span>
-            {Math.floor(movie.vote_average * 10) / 10} (
-            {movie.vote_count} votes)
+            {Math.floor(movie.vote_average * 10) / 10} ({movie.vote_count}
+            votes)
           </span>
         </div>
         <div className="h-0.5 bg-zinc-200 w-full" />

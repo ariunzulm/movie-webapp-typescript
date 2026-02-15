@@ -1,15 +1,11 @@
-import { Button } from "@/components/ui/button";
 import { getMovieById } from "@/lib/api/get-moviesById";
-import { ArrowLeft, Volume2 } from "lucide-react";
+import { DetailsCardProps } from "./_utils/awaits";
 
-import Link from "next/link";
 import Buttons from "./_components/Bottons";
 import MovieInfo from "./_components/MovieInfo";
-import TrailerPlayer from "./_components/TrailerPlayer";
-
-type DetailsCardProps = {
-  params: Promise<{ movieId: string }>;
-};
+import Similars from "./_components/Similars";
+import PosterDetails from "./_components/PosterDetails";
+import LinkButtons from "./_components/LinkButtons";
 
 const DetailsCard = async ({ params }: DetailsCardProps) => {
   const { movieId } = await params;
@@ -20,7 +16,7 @@ const DetailsCard = async ({ params }: DetailsCardProps) => {
 
   return (
     <div className="min-h-screen text-black mt-15">
-      <div className="w-full relative h-[80vh]">
+      <div className="relative w-full h-[80vh]">
         <div className="relative w-full h-[80vh]">
           <div className="absolute inset-0">
             <img
@@ -31,34 +27,22 @@ const DetailsCard = async ({ params }: DetailsCardProps) => {
             <div className="absolute inset-0 bg-linear-to-t from-black via-black/50 to-transparent" />
             <div className="absolute inset-0 bg-linear-to-r from-black/80 via-transparent to-transparent" />
           </div>
-          <Link href="/">
-            <Button
-              variant="ghost"
-              size="icon"
-              className="absolute top-6 left-6 z-50 h-12 w-12 text-white rounded-full hover:scale-125 border-2 border-white/50 bg-black/30 hover:bg-white/10 backdrop-blur-sm"
-            >
-              <ArrowLeft className="h-4 w-4" />
-            </Button>
-          </Link>
-          <Button
-            variant="ghost"
-            size="icon"
-            className="absolute top-6 right-6 z-50 h-12 w-12 text-white rounded-full hover:scale-125 border-2 border-white/50 bg-black/30 hover:bg-white/10 backdrop-blur-sm"
-          >
-            <Volume2 className="h-4 w-4" />
-          </Button>
+          <LinkButtons />
         </div>
 
         <div className="absolute bottom-2 left-0 p-12 z-40 group hover:scale-105">
-          <div className="max-w-7xl mx-auto text-foreground space-y-6">
+          <div className="max-w-7xl mx-auto text-white space-y-6">
             <h1 className="text-3xl md:text-4xl lg:text-5xl leading-8">
               {movie.title}
             </h1>
             <Buttons />
           </div>
         </div>
-        <MovieInfo params={params} />
-        <TrailerPlayer params={params} />
+
+        <div className="w-full max-w-4xl mx-auto flex flex-col md:flex-row gap-2">
+          <PosterDetails params={params} /> <MovieInfo params={params} />
+        </div>
+        <Similars params={params} />
       </div>
     </div>
   );

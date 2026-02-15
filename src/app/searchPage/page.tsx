@@ -1,12 +1,9 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuGroup,
   DropdownMenuItem,
-  DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
 import {
@@ -14,16 +11,12 @@ import {
   InputGroupAddon,
   InputGroupInput,
 } from "@/components/ui/input-group";
-import { Field, FieldDescription } from "@/components/ui/field";
+import { Field } from "@/components/ui/field";
 import { getSearchMovies } from "@/lib/api/search-movies";
 import { Movie } from "@/lib/types";
-import { ChevronDown, Loader, Loader2, SearchIcon } from "lucide-react";
+import { Loader2, SearchIcon } from "lucide-react";
 import { ChangeEventHandler, use, useEffect, useState } from "react";
-
-type SearchProps = {
-  title: string;
-  movies: Movie[];
-};
+import { SearchProps } from "../[movieId]/_utils/awaits";
 
 const Search = ({ movies }: SearchProps) => {
   const [searchValue, setSearchValue] = useState<string>("");
@@ -67,7 +60,7 @@ const Search = ({ movies }: SearchProps) => {
 
   return (
     <div className="relative flex flex-col justify-center w-full max-w-2xl mx-auto mt-20 mb-100">
-      <Field className="w-full ">
+      <Field className="w-full">
         <DropdownMenu open={isOpen} onOpenChange={setIsOpen}>
           <InputGroup>
             <InputGroupAddon align="inline-start">
@@ -93,13 +86,14 @@ const Search = ({ movies }: SearchProps) => {
                   className="cursor-pointer"
                 >
                   <div className="flex items-center gap-3">
-                    {movie.title && (
+                    {movies?.map((movie) => (
                       <img
+                        key={movie.id}
                         src={movie.poster_path}
                         alt={movie.title}
                         className="aspect-video h-full w-full object-cover"
                       />
-                    )}
+                    ))}
                   </div>
                 </DropdownMenuItem>
               ))}
